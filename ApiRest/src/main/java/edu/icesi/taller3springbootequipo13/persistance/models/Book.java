@@ -1,17 +1,49 @@
 package edu.icesi.taller3springbootequipo13.persistance.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Data
-@AllArgsConstructor
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue
     private long id;
     private String title;
     private Date publicationDate;
     private Long authorId;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
 
     public Book (){
 

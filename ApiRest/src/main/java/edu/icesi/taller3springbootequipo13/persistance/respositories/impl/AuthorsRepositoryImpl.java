@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/*
 @Repository
 public class AuthorsRepositoryImpl implements IAuthorsRepository {
 
@@ -60,3 +61,5 @@ public class AuthorsRepositoryImpl implements IAuthorsRepository {
     }
 
 }
+
+ */

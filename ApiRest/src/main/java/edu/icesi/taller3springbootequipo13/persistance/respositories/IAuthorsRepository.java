@@ -6,10 +6,8 @@ import edu.icesi.taller3springbootequipo13.persistance.models.Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IAuthorsRepository {
-    Optional<Author> save(Author author);
-    Optional<Author> findById(Long id);
-    Optional<Author> delete(Long id);
+public interface IAuthorsRepository extends CrudRepository<Author, Long> {
     List<Author> getAll();
 }

@@ -1,17 +1,44 @@
 package edu.icesi.taller3springbootequipo13.persistance.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
+import jakarta.persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+@Entity
 public class Author {
+
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String nationality;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
 
     public Author(){
 
