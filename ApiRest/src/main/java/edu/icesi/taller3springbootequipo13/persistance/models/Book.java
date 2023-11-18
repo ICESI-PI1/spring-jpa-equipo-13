@@ -50,9 +50,13 @@ public class Book {
     }
 
     public Book(Book book){
-        this.id= book.getId();
         this.title= book.getTitle();
         this.publicationDate = book.getPublicationDate();
         this.authorId = book.getAuthorId();
+    }
+    public Book(String title, Date publicationDate, Long authorId){
+        this.title = title;
+        this.publicationDate = publicationDate;
+        this.authorId = authorId;
     }
 }

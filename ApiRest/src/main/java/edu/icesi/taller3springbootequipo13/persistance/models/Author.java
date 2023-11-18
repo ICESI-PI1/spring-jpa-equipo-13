@@ -45,8 +45,12 @@ public class Author {
     }
 
     public Author(Author author) {
-        this.id = author.getId();
         this.name = author.getName();
         this.nationality = author.getNationality();
+    }
+
+    public Author(String name, String nationality){
+        this.name= name;
+        this.nationality = nationality;
     }
 }
