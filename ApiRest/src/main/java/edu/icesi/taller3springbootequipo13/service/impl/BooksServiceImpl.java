@@ -19,7 +19,7 @@ public class BooksServiceImpl implements IBooksService {
 
     @Override
     public Optional<Book> save(Book book) {
-        return booksRepository.save(book);
+        return Optional.of(booksRepository.save(book));
     }
 
     @Override

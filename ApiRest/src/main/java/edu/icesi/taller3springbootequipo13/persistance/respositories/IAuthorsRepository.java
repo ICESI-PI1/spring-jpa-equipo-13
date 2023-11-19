@@ -10,4 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IAuthorsRepository extends CrudRepository<Author, Long> {
     List<Author> getAll();
+
+    Optional<Author> delete(Long id);
+
 }
