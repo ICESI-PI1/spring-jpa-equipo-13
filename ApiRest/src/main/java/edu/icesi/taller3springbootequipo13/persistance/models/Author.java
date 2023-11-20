@@ -1,7 +1,7 @@
 package edu.icesi.taller3springbootequipo13.persistance.models;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 
 import java.util.ArrayList;

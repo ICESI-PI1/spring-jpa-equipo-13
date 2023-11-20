@@ -23,13 +23,14 @@ public class AuthorsServiceImpl implements IAuthorsService {
     }
 
     @Override
-    public List<Author> getAll() {
-        return authorsRepository.getAll();
+    public Iterable<Author> getAll() {
+        return authorsRepository.findAll();
     }
 
     @Override
     public Author edit(Long id, Author newAuthor) throws AuthorNotFoundException {
-        List<Author> authors = authorsRepository.getAll();
+        Iterable<Author> authors = authorsRepository.findAll();
+        /*
         for(int i=0; i<authors.size(); i++){
             if(Objects.equals(authors.get(i).getId(), id)){
                 Author author = authors.get(i);
@@ -38,6 +39,18 @@ public class AuthorsServiceImpl implements IAuthorsService {
                 return author;
             }
         }
+        */
+
+
+        for(Author a: authors){
+            if(Objects.equals(a.getId(), id)){
+                Author author = a;
+                author.setName(newAuthor.getName());
+                author.setNationality(newAuthor.getNationality());
+                return author;
+            }
+        }
+
         throw new AuthorNotFoundException("No se encontró un autor con el ID especificado: " + id);
     }
 
@@ -47,8 +60,8 @@ public class AuthorsServiceImpl implements IAuthorsService {
     }
 
     @Override
-    public Optional<Author> delete(Long id) {
-        return authorsRepository.delete(id);
+    public void delete(Long id) {
+        authorsRepository.deleteById(id);
     }
 
 

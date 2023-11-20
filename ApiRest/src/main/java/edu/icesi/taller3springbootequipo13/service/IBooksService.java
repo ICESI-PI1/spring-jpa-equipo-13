@@ -6,9 +6,9 @@ import edu.icesi.taller3springbootequipo13.persistance.models.Book;
 public interface IBooksService {
 
     Optional<Book> save(Book book);
-    List<Book> getAll();
+    Iterable<Book> getAll();
     Optional<Book> edit(Long id, Book book);
     Optional<Book> findById(Long id);
-    Optional<Book> delete(Long id);
+    void delete(Long id);
     List<Book> findBooksByAuthor(Long id);
 }

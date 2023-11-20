@@ -24,8 +24,11 @@ public class AuthorsController {
     private IAuthorsService authorsService;
 
 
-    @Autowired
     private AuthorMapper mapper;
+
+    public AuthorsController(){
+        this.mapper= new AuthorMapper();
+    }
 
 
     @Autowired
@@ -62,8 +65,8 @@ public class AuthorsController {
     }
 
     @DeleteMapping("/{id}")
-    public Author deleteAuthor(@PathVariable Long id) {
-        return authorsService.delete(id).orElse(null);
+    public void deleteAuthor(@PathVariable Long id) {
+       authorsService.delete(id);
     }
 
     @GetMapping("/{id}/libros")

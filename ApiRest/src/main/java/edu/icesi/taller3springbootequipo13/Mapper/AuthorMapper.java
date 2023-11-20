@@ -2,9 +2,10 @@ package edu.icesi.taller3springbootequipo13.Mapper;
 
 import edu.icesi.taller3springbootequipo13.DTO.AuthorDTO;
 import edu.icesi.taller3springbootequipo13.persistance.models.Author;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
+@NoArgsConstructor
 public class AuthorMapper {
 
     public AuthorDTO authorToDto(Author author){

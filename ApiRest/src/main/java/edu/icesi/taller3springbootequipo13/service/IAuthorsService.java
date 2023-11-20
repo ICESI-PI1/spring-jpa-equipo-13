@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface IAuthorsService {
     Optional<Author> save(Author author);
-    List<Author> getAll();
+    Iterable<Author> getAll();
     Author edit(Long id, Author author) throws AuthorNotFoundException;
     Optional<Author> findById(Long id);
-    Optional<Author> delete(Long id);
+    void delete(Long id);
 }

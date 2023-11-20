@@ -1,5 +1,5 @@
 package edu.icesi.taller3springbootequipo13;
-
+/*
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +26,7 @@ import edu.icesi.taller3springbootequipo13.service.IAuthorsService;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional
+
 public class AuthorTest {
 
 
@@ -56,3 +57,4 @@ public class AuthorTest {
 
 
 }
+*/

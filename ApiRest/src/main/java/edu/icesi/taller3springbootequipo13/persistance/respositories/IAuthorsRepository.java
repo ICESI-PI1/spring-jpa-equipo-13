@@ -9,8 +9,8 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 public interface IAuthorsRepository extends CrudRepository<Author, Long> {
-    List<Author> getAll();
+    //List<Author> getAll();
 
-    Optional<Author> delete(Long id);
+    //Optional<Author> delete(Long id);
 
 }
