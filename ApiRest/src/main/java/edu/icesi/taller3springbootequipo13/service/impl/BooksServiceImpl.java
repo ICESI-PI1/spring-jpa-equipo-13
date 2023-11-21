@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BooksServiceImpl implements IBooksService {
@@ -25,8 +22,31 @@ public class BooksServiceImpl implements IBooksService {
 
 
     @Override
-    public Optional<Book> save(Book book) {
+    public Optional<Book> save(String title, Date publicationDate, Long id) {
+        Iterable<Author> a= authorsRepository.findAll();
+        Author b= null;
+        for(Author author: a){
+            if(author.getId()==id) {
+                b = author;
+                break;
+            }
+        }
+        Book book= new Book(title,publicationDate,b);
         return Optional.of(booksRepository.save(book));
+    }
+
+    @Override
+    public Author bk(Long id) {
+        Iterable<Author> a= authorsRepository.findAll();
+        Author b= null;
+        for(Author author: a){
+            if(author.getId()==id) {
+                b = author;
+                break;
+            }
+        }
+
+        return b;
     }
 
     @Override
@@ -63,12 +83,12 @@ public class BooksServiceImpl implements IBooksService {
     }
 
     @Override
-    public List<Book> findBooksByAuthor(Long id) {
+    public List<Book> findBooksByAuthor(String name) {
 
         Iterable<Book> books = booksRepository.findAll();
         List<Book> booksByAuthor = new ArrayList<>();
         for (Book book : books) {
-            if (Objects.equals(book.getAuthor(), id)) {
+            if (Objects.equals(book.getAuthor().getName(), name)) {
                 booksByAuthor.add(book);
             }
         }

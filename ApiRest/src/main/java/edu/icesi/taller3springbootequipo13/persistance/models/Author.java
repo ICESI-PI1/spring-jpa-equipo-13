@@ -12,7 +12,7 @@ import java.util.Set;
 public class Author {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String nationality;
@@ -50,6 +50,7 @@ public class Author {
     }
 
     public Author(Author author) {
+        this.id= author.getId();
         this.name = author.getName();
         this.nationality = author.getNationality();
     }
@@ -64,4 +65,6 @@ public class Author {
         this.name= name;
         this.nationality = nationality;
     }
+
+
 }

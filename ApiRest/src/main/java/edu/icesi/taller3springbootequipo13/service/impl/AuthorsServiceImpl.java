@@ -19,7 +19,12 @@ public class AuthorsServiceImpl implements IAuthorsService {
 
     @Override
     public Optional<Author> save(Author author) {
-        return Optional.of(authorsRepository.save(author));
+        try {
+            return Optional.of(authorsRepository.save(author));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
     }
 
     @Override

@@ -31,14 +31,14 @@ public class BooksController {
         List<Book> books = (List<Book>) service.getAll();
         List<BookDTO> dtos = new ArrayList<>();
         for(Book b: books){
-            dtos.add(mapper.bookToDto(b));
+            dtos.add(mapper.bookToDto(b, b.getId()));
         }
         return dtos;
     }
 
     @GetMapping("/{id}")
     public BookDTO findOne(@PathVariable Long id){
-        return mapper.bookToDto(service.findById(id).orElse(null));
+        return mapper.bookToDto(service.findById(id).orElse(null), id);
     }
 
 
@@ -46,8 +46,9 @@ public class BooksController {
     public BookDTO create(@RequestBody BookDTO book){
         if(!this.service.findById(mapper.toBook(book).getId()).isPresent()) {
             Book a= mapper.toBook(book);
-            Book book1= this.service.save(a).orElse(null);
-            return mapper.bookToDto(book1);
+            System.out.println("este es el author: "+ book.getAuthorId());
+            this.service.save(a.getTitle(), a.getPublicationDate(), book.getAuthorId()).orElse(null);
+            return mapper.bookToDto(a, book.getAuthorId());
         }
         throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Entity already in the program"
@@ -62,7 +63,7 @@ public class BooksController {
             book1 = this.service.edit(id,a).orElse(null);
 
         }
-        return mapper.bookToDto(book1);
+        return mapper.bookToDto(book1, id);
     }
 
     @DeleteMapping("/{id}")

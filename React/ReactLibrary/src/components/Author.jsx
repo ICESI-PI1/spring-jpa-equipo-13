@@ -66,7 +66,6 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor}) {
     <Table responsive bordered>
       <thead>
         <tr>
-          <th>Id</th>
           <th>Nombre</th>
           <th>Nacionalidad</th>
         </tr>
@@ -74,7 +73,6 @@ function Authorview({authors, getOneAuthor, getAuthors, onDeleteAuthor}) {
       <tbody>
         {authors.map((author, index) => (
           <tr key={index}>
-            <th scope="row">{author.id}</th>
             <td>{author.name}</td>
             <td>{author.nationality}</td>
             <td>

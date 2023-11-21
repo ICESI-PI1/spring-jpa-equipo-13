@@ -38,14 +38,7 @@ function AuthorForm({addAuthor, authorEdit}){
                 fontSize: '35px', 
                 marginBottom: '30px'
             }} >Agregar un Autor</h1>
-            <FormGroup>
-                <div>
-                    <Label style={{
-                        display: 'flex'
-                    }} for="exampleId">Numero de identificacion</Label>
-                </div>
-                <Input id="exampleId" name="id" placeholder="id" type="id" onChange={(e)=>{setId(e.target.value)}} />
-            </FormGroup>
+            
             <FormGroup>
                 <Label style={{
                         display: 'flex'

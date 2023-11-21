@@ -10,9 +10,8 @@ import java.util.Optional;
 
 public interface IBooksRepository extends CrudRepository<Book, Long> {
 
-    //List<Book> getAll();
-    //Optional<Book> edit(Long id, Book book);
-    //List<Book> findBooksByAuthor(Long id);
 
-    //Optional<Book> delete(Long id);
+    List<Book> findBooksByAuthor(Long id);
+
+
 }

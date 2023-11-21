@@ -12,13 +12,14 @@ const CreateBook = () => {
     try {
        
         const res = await axios.post("/libros", book);
-        console.log(res)
+        console.log(res.data)
         if (res.status !== 201) {
           setAlert("probando");
           console.log("probando");
         }
         if (res.status === 201) {
           setBookEdit(res.data);
+          console.log(res.data)
         }
     } catch (e) {
       setAlert("probando");

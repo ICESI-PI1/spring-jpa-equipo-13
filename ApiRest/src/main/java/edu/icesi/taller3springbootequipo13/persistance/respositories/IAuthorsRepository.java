@@ -13,4 +13,6 @@ public interface IAuthorsRepository extends CrudRepository<Author, Long> {
 
     //Optional<Author> delete(Long id);
 
+    @Override
+    <S extends Author> S save(S s);
 }

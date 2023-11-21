@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
     private Date publicationDate;

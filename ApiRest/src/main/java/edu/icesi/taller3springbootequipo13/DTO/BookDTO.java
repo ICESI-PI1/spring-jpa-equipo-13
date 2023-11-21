@@ -10,5 +10,5 @@ import java.util.Date;
 public class BookDTO {
     private String title;
     private Date publicationDate;
-    private Author author;
+    private Long authorId;
 }

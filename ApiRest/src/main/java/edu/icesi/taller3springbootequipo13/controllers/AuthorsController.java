@@ -53,8 +53,9 @@ public class AuthorsController {
     public AuthorDTO newAuthor(@RequestBody AuthorDTO author) {
         System.out.println(author);
         Author a = mapper.toAuthor(author);
-        Author author1 = this.authorsService.save(a).orElse(null);
-        return mapper.authorToDto(author1);
+        System.out.println(a);
+        this.authorsService.save(a).orElse(null);
+        return mapper.authorToDto(a);
     }
 
     @PutMapping("/{id}")
@@ -70,7 +71,7 @@ public class AuthorsController {
     }
 
     @GetMapping("/{id}/libros")
-    public List<Book> booksByAuthor(@PathVariable Long id) {
+    public List<Book> booksByAuthor(@PathVariable String id) {
         return booksService.findBooksByAuthor(id);
     }
 
