@@ -1,0 +1,23 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+spring-boot-jwt,edu.icesi.taller3springbootequipo13,Taller3SpringBootEquipo13Application,5,3,0,0,2,1,1,1,1,1
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.controllers,AuthorsController,97,0,2,0,21,0,8,0,7,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.controllers,JwtAuthenticationController,51,0,0,0,13,0,3,0,3,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.controllers,BooksController,129,0,6,0,23,0,9,0,6,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.persistance.models,Author,31,29,0,0,12,13,3,7,3,7
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.persistance.models,JwtRequest,26,0,0,0,12,0,6,0,6,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.persistance.models,Book,19,39,0,0,7,17,2,9,2,9
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.persistance.models,JwtResponse,9,0,0,0,4,0,2,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.service.impl,BooksServiceImpl,143,0,16,0,38,0,17,0,9,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.service.impl,AuthorsServiceImpl,66,0,4,0,18,0,8,0,6,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.service.impl,JwtUserDetailsService,22,0,2,0,4,0,3,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.service.impl,AuthorNotFoundException,3,0,0,0,2,0,1,0,1,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,JwtRequestFilter,81,0,10,0,24,0,7,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,WebSecurityConfig,149,0,0,0,26,0,6,0,6,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,JwtTokenUtil,95,0,4,0,15,0,11,0,9,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,JwtAuthenticationEntryPoint,8,0,0,0,3,0,2,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,WebConfiguration.new WebMvcConfigurer() {...},38,0,0,0,4,0,2,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.configurations,WebConfiguration,8,0,0,0,2,0,2,0,2,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.Mapper,BookMapper,25,0,0,0,3,0,3,0,3,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.Mapper,AuthorMapper,26,0,0,0,6,0,3,0,3,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.DTO,AuthorDTO,124,0,22,0,5,0,21,0,10,0
+spring-boot-jwt,edu.icesi.taller3springbootequipo13.DTO,BookDTO,167,0,30,0,6,0,27,0,12,0

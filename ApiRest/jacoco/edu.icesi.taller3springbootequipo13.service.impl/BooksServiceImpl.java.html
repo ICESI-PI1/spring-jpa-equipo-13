@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BooksServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-jwt</a> &gt; <a href="index.source.html" class="el_package">edu.icesi.taller3springbootequipo13.service.impl</a> &gt; <span class="el_source">BooksServiceImpl.java</span></div><h1>BooksServiceImpl.java</h1><pre class="source lang-java linenums">package edu.icesi.taller3springbootequipo13.service.impl;
+
+import edu.icesi.taller3springbootequipo13.persistance.models.Book;
+import edu.icesi.taller3springbootequipo13.persistance.models.Author;
+import edu.icesi.taller3springbootequipo13.persistance.respositories.IAuthorsRepository;
+import edu.icesi.taller3springbootequipo13.persistance.respositories.IBooksRepository;
+import edu.icesi.taller3springbootequipo13.service.IBooksService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import java.util.*;
+
+@Service
+<span class="nc" id="L15">public class BooksServiceImpl implements IBooksService {</span>
+
+    @Autowired
+    private IBooksRepository booksRepository;
+
+    @Autowired
+    private IAuthorsRepository authorsRepository;
+
+
+    @Override
+    public Optional&lt;Book&gt; save(String title, Date publicationDate, Long id) {
+<span class="nc" id="L26">        Iterable&lt;Author&gt; a= authorsRepository.findAll();</span>
+<span class="nc" id="L27">        Author b= null;</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        for(Author author: a){</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            if(author.getId()==id) {</span>
+<span class="nc" id="L30">                b = author;</span>
+<span class="nc" id="L31">                break;</span>
+            }
+<span class="nc" id="L33">        }</span>
+<span class="nc" id="L34">        Book book= new Book(title,publicationDate,b);</span>
+<span class="nc" id="L35">        return Optional.of(booksRepository.save(book));</span>
+    }
+
+    @Override
+    public Author bk(Long id) {
+<span class="nc" id="L40">        Iterable&lt;Author&gt; a= authorsRepository.findAll();</span>
+<span class="nc" id="L41">        Author b= null;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        for(Author author: a){</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(author.getId()==id) {</span>
+<span class="nc" id="L44">                b = author;</span>
+<span class="nc" id="L45">                break;</span>
+            }
+<span class="nc" id="L47">        }</span>
+
+<span class="nc" id="L49">        return b;</span>
+    }
+
+    @Override
+    public Iterable&lt;Book&gt; getAll() {
+<span class="nc" id="L54">        return booksRepository.findAll();</span>
+    }
+
+    @Override
+    public Optional&lt;Book&gt; edit(Long id, Book book) {
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(booksRepository.findById(id).isPresent()){</span>
+<span class="nc" id="L60">            return Optional.empty();</span>
+        }else{
+<span class="nc" id="L62">            Author author = book.getAuthor();</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if(author==null) {</span>
+<span class="nc" id="L64">                return Optional.empty();</span>
+            } else {
+<span class="nc" id="L66">                delete(id);</span>
+<span class="nc" id="L67">                booksRepository.save(book);</span>
+<span class="nc" id="L68">                return Optional.of(book);</span>
+            }
+        }
+
+
+    }
+
+    @Override
+    public Optional&lt;Author&gt; findAuthorsByNationality(String nationality) {
+<span class="nc" id="L77">        return authorsRepository.findByNationality(nationality);</span>
+    }
+
+    @Override
+    public Optional&lt;Book&gt; findById(Long id) {
+<span class="nc" id="L82">        return booksRepository.findById(id);</span>
+    }
+
+    @Override
+    public void delete(Long id) {
+<span class="nc" id="L87">        booksRepository.deleteById(id);</span>
+<span class="nc" id="L88">    }</span>
+
+    @Override
+    public List&lt;Book&gt; findBooksByAuthor(String name) {
+
+<span class="nc" id="L93">        Iterable&lt;Book&gt; books = booksRepository.findAll();</span>
+<span class="nc" id="L94">        List&lt;Book&gt; booksByAuthor = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        for (Book book : books) {</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (Objects.equals(book.getAuthor().getName(), name)) {</span>
+<span class="nc" id="L97">                booksByAuthor.add(book);</span>
+            }
+<span class="nc" id="L99">        }</span>
+
+<span class="nc" id="L101">        return booksByAuthor;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

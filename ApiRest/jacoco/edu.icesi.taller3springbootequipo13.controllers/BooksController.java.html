@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BooksController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-jwt</a> &gt; <a href="index.source.html" class="el_package">edu.icesi.taller3springbootequipo13.controllers</a> &gt; <span class="el_source">BooksController.java</span></div><h1>BooksController.java</h1><pre class="source lang-java linenums">package edu.icesi.taller3springbootequipo13.controllers;
+
+import edu.icesi.taller3springbootequipo13.DTO.BookDTO;
+import edu.icesi.taller3springbootequipo13.Mapper.BookMapper;
+import edu.icesi.taller3springbootequipo13.persistance.models.Book;
+import edu.icesi.taller3springbootequipo13.service.IBooksService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping( &quot;/libros&quot;)
+public class BooksController {
+
+    private IBooksService service;
+
+    @Autowired
+    private BookMapper mapper;
+
+<span class="nc" id="L25">    public BooksController (IBooksService booksService){</span>
+<span class="nc" id="L26">        this.service= booksService;</span>
+<span class="nc" id="L27">    }</span>
+
+    @GetMapping(&quot;&quot;)
+    public List&lt;BookDTO&gt; getAll(){
+<span class="nc" id="L31">        List&lt;Book&gt; books = (List&lt;Book&gt;) service.getAll();</span>
+<span class="nc" id="L32">        List&lt;BookDTO&gt; dtos = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for(Book b: books){</span>
+<span class="nc" id="L34">            dtos.add(mapper.bookToDto(b, b.getId()));</span>
+<span class="nc" id="L35">        }</span>
+<span class="nc" id="L36">        return dtos;</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public BookDTO findOne(@PathVariable Long id){
+<span class="nc" id="L41">        return mapper.bookToDto(service.findById(id).orElse(null), id);</span>
+    }
+
+
+    @PostMapping(&quot;&quot;)
+    public BookDTO create(@RequestBody BookDTO book){
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if(!this.service.findById(mapper.toBook(book).getId()).isPresent()) {</span>
+<span class="nc" id="L48">            Book a= mapper.toBook(book);</span>
+<span class="nc" id="L49">            System.out.println(&quot;este es el author: &quot;+ book.getAuthorId());</span>
+<span class="nc" id="L50">            this.service.save(a.getTitle(), a.getPublicationDate(), book.getAuthorId()).orElse(null);</span>
+<span class="nc" id="L51">            return mapper.bookToDto(a, book.getAuthorId());</span>
+        }
+<span class="nc" id="L53">        throw new ResponseStatusException(</span>
+                HttpStatus.NOT_FOUND, &quot;Entity already in the program&quot;
+        );
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public BookDTO changeBook(@PathVariable Long id, @RequestBody BookDTO book){
+<span class="nc" id="L60">        Book book1= null;</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(this.service.findById(id).isPresent()){</span>
+<span class="nc" id="L62">            Book a = mapper.toBook(book);</span>
+<span class="nc" id="L63">            book1 = this.service.edit(id,a).orElse(null);</span>
+
+        }
+<span class="nc" id="L66">        return mapper.bookToDto(book1, id);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public void deleteBook(@PathVariable Long id){
+<span class="nc" id="L71">       service.delete(id);</span>
+<span class="nc" id="L72">    }</span>
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
