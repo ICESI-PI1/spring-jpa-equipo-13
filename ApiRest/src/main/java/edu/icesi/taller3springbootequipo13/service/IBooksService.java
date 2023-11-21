@@ -16,4 +16,5 @@ public interface IBooksService {
     List<Book> findBooksByAuthor(String name);
 
     Author bk(Long id);
+    Optional<Author> findAuthorsByNationality(String nationality);
 }

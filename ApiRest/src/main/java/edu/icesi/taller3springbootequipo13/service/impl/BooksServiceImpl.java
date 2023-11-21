@@ -73,6 +73,11 @@ public class BooksServiceImpl implements IBooksService {
     }
 
     @Override
+    public Optional<Author> findAuthorsByNationality(String nationality) {
+        return authorsRepository.findByNationality(nationality);
+    }
+
+    @Override
     public Optional<Book> findById(Long id) {
         return booksRepository.findById(id);
     }

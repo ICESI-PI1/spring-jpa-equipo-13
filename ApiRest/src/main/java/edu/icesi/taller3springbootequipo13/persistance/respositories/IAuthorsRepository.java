@@ -15,4 +15,6 @@ public interface IAuthorsRepository extends CrudRepository<Author, Long> {
 
     @Override
     <S extends Author> S save(S s);
+
+    Optional<Author> findByNationality(String nationality);
 }
