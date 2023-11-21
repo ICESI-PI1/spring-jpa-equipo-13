@@ -11,7 +11,9 @@ public class Book {
     private long id;
     private String title;
     private Date publicationDate;
-    private Long authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id") // Specify the foreign key column
+    private Author author;
 
     public long getId() {
         return id;
@@ -37,12 +39,12 @@ public class Book {
         this.publicationDate = publicationDate;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public Book (){
@@ -52,11 +54,11 @@ public class Book {
     public Book(Book book){
         this.title= book.getTitle();
         this.publicationDate = book.getPublicationDate();
-        this.authorId = book.getAuthorId();
+        this.author = book.getAuthor();
     }
-    public Book(String title, Date publicationDate, Long authorId){
+    public Book(String title, Date publicationDate, Author author){
         this.title = title;
         this.publicationDate = publicationDate;
-        this.authorId = authorId;
+        this.author = author;
     }
 }

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class BookMapper {
 
     public BookDTO bookToDto (Book book){
-        return  new BookDTO(book.getTitle(), book.getPublicationDate(), book.getAuthorId());
+        return  new BookDTO(book.getTitle(), book.getPublicationDate(), book.getAuthor());
     }
 
     public Book toBook(BookDTO dto){
-        return new Book(dto.getTitle(), dto.getPublicationDate(), dto.getAuthorId());
+        return new Book(dto.getTitle(), dto.getPublicationDate(), dto.getAuthor());
     }
 }

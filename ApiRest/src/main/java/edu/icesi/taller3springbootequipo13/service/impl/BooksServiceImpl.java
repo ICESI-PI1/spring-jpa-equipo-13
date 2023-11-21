@@ -39,7 +39,7 @@ public class BooksServiceImpl implements IBooksService {
         if(booksRepository.findById(id).isPresent()){
             return Optional.empty();
         }else{
-            Author author = authorsRepository.findById(book.getAuthorId()).orElse(null);
+            Author author = book.getAuthor();
             if(author==null) {
                 return Optional.empty();
             } else {
@@ -68,7 +68,7 @@ public class BooksServiceImpl implements IBooksService {
         Iterable<Book> books = booksRepository.findAll();
         List<Book> booksByAuthor = new ArrayList<>();
         for (Book book : books) {
-            if (Objects.equals(book.getAuthorId(), id)) {
+            if (Objects.equals(book.getAuthor(), id)) {
                 booksByAuthor.add(book);
             }
         }

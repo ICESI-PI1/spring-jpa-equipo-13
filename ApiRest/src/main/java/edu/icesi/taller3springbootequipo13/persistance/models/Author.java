@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Author {
@@ -15,6 +16,10 @@ public class Author {
     private Long id;
     private String name;
     private String nationality;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    private Set<Book> books;
+
 
     public Long getId() {
         return id;

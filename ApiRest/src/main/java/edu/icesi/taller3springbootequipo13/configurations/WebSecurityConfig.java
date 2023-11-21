@@ -68,6 +68,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+        // Allow access to H2 Console without authentication
+        httpSecurity.authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()
+                .and().headers().frameOptions().disable()
+                .and().csrf().ignoringAntMatchers("/h2-console/**")
+                .and().cors().disable();
         //httpSecurity.cors().disable();
         httpSecurity.cors();
         // We don't need CSRF for this example

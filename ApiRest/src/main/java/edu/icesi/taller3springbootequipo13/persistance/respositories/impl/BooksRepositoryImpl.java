@@ -28,7 +28,7 @@ public class BooksRepositoryImpl implements IBooksRepository {
     @Override
     public Optional<Book> save(Book book) {
         Book existingBook = findById(book.getId()).orElse(null);
-        Author authorsId = authorsRepository.findById(book.getAuthorId()).orElse(null);
+        Author authorsId = authorsRepository.findById(book.getAuthor()).orElse(null);
 
         if((existingBook == null) && (authorsId != null) ){
             //System.out.println("AYUDAAA");
@@ -65,7 +65,7 @@ public class BooksRepositoryImpl implements IBooksRepository {
         if(!findById(id).isPresent()){
             return Optional.empty();
         } else {
-            Author author = authorsRepository.findById(book.getAuthorId()).orElse(null);
+            Author author = authorsRepository.findById(book.getAuthor()).orElse(null);
             if(author==null) {
                 return Optional.empty();
             } else {
@@ -83,7 +83,7 @@ public class BooksRepositoryImpl implements IBooksRepository {
         List<Book> books = getAll();
         List<Book> booksByAuthor = new ArrayList<>();
         for (Book book : books) {
-            if (Objects.equals(book.getAuthorId(), id)) {
+            if (Objects.equals(book.getAuthor(), id)) {
                 booksByAuthor.add(book);
             }
         }
