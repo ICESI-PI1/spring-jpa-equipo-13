@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 public class AuthorMapper {
 
     public AuthorDTO authorToDto(Author author){
+        Long id = author.getId();
         String name = author.getName();
         String nationality = author.getNationality();
 
-        return new AuthorDTO(name, nationality);
+        return new AuthorDTO(id, name, nationality);
     }
 
     public Author toAuthor(AuthorDTO dto){
-        return new Author(dto.getName(), dto.getNationality());
+        return new Author(dto.getId(), dto.getName(), dto.getNationality());
     }
 }

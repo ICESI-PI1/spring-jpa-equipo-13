@@ -58,4 +58,10 @@ public class Author {
         this.name= name;
         this.nationality = nationality;
     }
+
+    public Author(Long id, String name, String nationality){
+        this.id = id;
+        this.name= name;
+        this.nationality = nationality;
+    }
 }

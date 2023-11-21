@@ -21,6 +21,7 @@ function BookList(){
     const getBooks = async () =>{
         try{
             const res = await axios.get("/libros")
+            console.log(res.data)
             setBookList(res.data)
         }catch (e){
             console.log(e)
