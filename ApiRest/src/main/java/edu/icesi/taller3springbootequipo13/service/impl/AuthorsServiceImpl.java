@@ -34,29 +34,8 @@ public class AuthorsServiceImpl implements IAuthorsService {
 
     @Override
     public Author edit(Long id, Author newAuthor) throws AuthorNotFoundException {
-        Iterable<Author> authors = authorsRepository.findAll();
-        /*
-        for(int i=0; i<authors.size(); i++){
-            if(Objects.equals(authors.get(i).getId(), id)){
-                Author author = authors.get(i);
-                author.setName(newAuthor.getName());
-                author.setNationality(newAuthor.getNationality());
-                return author;
-            }
-        }
-        */
-
-
-        for(Author a: authors){
-            if(Objects.equals(a.getId(), id)){
-                Author author = a;
-                author.setName(newAuthor.getName());
-                author.setNationality(newAuthor.getNationality());
-                return author;
-            }
-        }
-
-        throw new AuthorNotFoundException("No se encontró un autor con el ID especificado: " + id);
+        authorsRepository.deleteById(newAuthor.getId());
+        return authorsRepository.save(newAuthor);
     }
 
     @Override

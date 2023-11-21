@@ -61,6 +61,7 @@ public class AuthorsController {
     @PutMapping("/{id}")
     public AuthorDTO editAuthor(@PathVariable Long id, @RequestBody AuthorDTO author) throws AuthorNotFoundException {
         Author a = mapper.toAuthor(author);
+        System.out.println(a.getName());
         Author author1= this.authorsService.edit(id,a);
         return mapper.authorToDto(author1);
     }

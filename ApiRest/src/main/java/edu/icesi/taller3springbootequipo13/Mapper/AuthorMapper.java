@@ -13,10 +13,10 @@ public class AuthorMapper {
         String name = author.getName();
         String nationality = author.getNationality();
 
-        return new AuthorDTO( name, nationality);
+        return new AuthorDTO( id, name, nationality);
     }
 
     public Author toAuthor(AuthorDTO dto){
-        return new Author(dto.getName(), dto.getNationality());
+        return new Author(dto.getId(), dto.getName(), dto.getNationality());
     }
 }

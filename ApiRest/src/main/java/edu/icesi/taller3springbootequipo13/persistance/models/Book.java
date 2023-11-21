@@ -11,7 +11,7 @@ public class Book {
     private long id;
     private String title;
     private Date publicationDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id") // Specify the foreign key column
     private Author author;
 

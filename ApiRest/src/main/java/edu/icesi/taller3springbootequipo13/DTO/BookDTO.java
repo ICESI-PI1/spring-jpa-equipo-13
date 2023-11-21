@@ -8,6 +8,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDTO {
+    private Long id;
     private String title;
     private Date publicationDate;
     private Long authorId;

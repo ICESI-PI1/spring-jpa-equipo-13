@@ -12,8 +12,8 @@ public class BookMapper {
 
     @Autowired
     private IBooksService booksService;
-    public BookDTO bookToDto (Book book, Long id){
-        return  new BookDTO(book.getTitle(), book.getPublicationDate(), id);
+    public BookDTO bookToDto (Book book){
+        return  new BookDTO(book.getId(), book.getTitle(), book.getPublicationDate(), book.getAuthor().getId());
     }
 
     public Book toBook(BookDTO dto){

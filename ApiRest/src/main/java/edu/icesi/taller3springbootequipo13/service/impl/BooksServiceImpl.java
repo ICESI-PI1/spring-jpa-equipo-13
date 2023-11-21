@@ -56,19 +56,8 @@ public class BooksServiceImpl implements IBooksService {
 
     @Override
     public Optional<Book> edit(Long id, Book book) {
-        if(booksRepository.findById(id).isPresent()){
-            return Optional.empty();
-        }else{
-            Author author = book.getAuthor();
-            if(author==null) {
-                return Optional.empty();
-            } else {
-                delete(id);
-                booksRepository.save(book);
-                return Optional.of(book);
-            }
-        }
-
+        booksRepository.deleteById(id);
+        return Optional.of(booksRepository.save(book));
 
     }
 
